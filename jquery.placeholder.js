@@ -83,6 +83,14 @@
             input.blur(function() {
                 placeholder.show(false);
             });
+            
+            // Prevent placeholders to be sent as empty values
+            input.closest('form').submit(function(){
+                if(input.hasClass('placeholder')){
+                    input.removeClass('placeholder');
+                    input.val('');
+                }
+            });
 
             // On page refresh, IE doesn't re-populate user input
             // until the window.onload event is fired.
